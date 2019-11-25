@@ -38,12 +38,16 @@
             </g></svg
         ></a>
       </div>
-      <div class="navbar-burger burger"><span></span><span></span><span></span></div>
+      <div class="navbar-burger burger" (click)="toggleMenu()"><span></span><span></span><span></span></div>
     </div>
-    <div class="navbar-menu">
+    <div class="navbar-menu" [style.display]="isShowMobileMenu ? 'block' : null">
       <pm-nav [routes]="routes"></pm-nav>
       <div class="navbar-end">
         <a class="navbar-item" [routerLink]="['/auth/login']" routerLinkActive="router-link-active">Sign in</a>
+        <label class="checkbox navbar-item">
+          <input [checked]="themeService.isDark" (change)="onThemeChange($event)" type="checkbox" />
+          &nbsp; Dark theme
+        </label>
       </div>
     </div>
   </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { INavRoute } from '../../models/nav-route.interface';
 import { ThemeService } from '../../services/theme.service';
+import { THEME } from '../../constants/theme.constants';
 
 @Component({
   selector: 'pm-header',
@@ -8,6 +9,8 @@ import { ThemeService } from '../../services/theme.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  isShowMobileMenu = false;
+
   routes: INavRoute[] = [
     {
       link: ['passwords'],
@@ -23,4 +26,12 @@ export class HeaderComponent implements OnInit {
   constructor(public themeService: ThemeService) {}
 
   ngOnInit() {}
+
+  onThemeChange() {
+    this.themeService.toggleTheme();
+  }
+
+  toggleMenu() {
+    this.isShowMobileMenu = !this.isShowMobileMenu;
+  }
 }

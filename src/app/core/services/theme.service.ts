@@ -7,11 +7,15 @@ import { THEME } from '../constants/theme.constants';
 })
 export class ThemeService {
   private currentTheme$ = new BehaviorSubject(THEME.light);
-  isDark = false;
+  isDark = this.currentTheme === THEME.dark;
   constructor() {}
 
   changeTheme(theme: string) {
     this.currentTheme = theme;
+  }
+
+  toggleTheme() {
+    this.changeTheme(this.isDark ? THEME.light : THEME.dark);
   }
 
   init() {
