@@ -1,0 +1,11 @@
+.logo {
+  width: 30px;
+  height: auto;
+}
+
+:host-context(.is-dark) {
+  .logo {
+    color: white;
+    fill: currentColor;
+  }
+}
