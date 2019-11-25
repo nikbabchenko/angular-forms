@@ -7,6 +7,7 @@ import { THEME } from '../constants/theme.constants';
 })
 export class ThemeService {
   private currentTheme$ = new BehaviorSubject(THEME.light);
+  isDark = false;
   constructor() {}
 
   changeTheme(theme: string) {
@@ -20,7 +21,7 @@ export class ThemeService {
 
   set currentTheme(theme: string) {
     const rootEl = document.querySelector('html');
-    if (theme === THEME.dark && this.currentTheme !== THEME.dark) {
+    if (theme === THEME.dark) {
       rootEl.classList.add('is-dark');
     } else {
       if (rootEl.classList.contains('is-dark')) {
@@ -31,6 +32,7 @@ export class ThemeService {
     (document.getElementById('theme') as HTMLLinkElement).href = theme;
     localStorage.setItem('password-theme', theme);
     this.currentTheme$.next(theme);
+    this.isDark = theme === THEME.dark;
   }
 
   get currentTheme(): string {

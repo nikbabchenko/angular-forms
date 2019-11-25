@@ -1,0 +1,9 @@
+.hero-img {
+  object-fit: contain;
+}
+
+:host {
+  margin: auto;
+  display: block;
+  width: 100%;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { INavRoute } from '../../models/nav-route.interface';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'pm-header',
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit {
       options: { exact: true }
     }
   ];
-  constructor() {}
+  constructor(public themeService: ThemeService) {}
 
   ngOnInit() {}
 }
