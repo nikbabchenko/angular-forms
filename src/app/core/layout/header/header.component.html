@@ -41,15 +41,9 @@
       <div class="navbar-burger burger"><span></span><span></span><span></span></div>
     </div>
     <div class="navbar-menu">
-      <div class="navbar-start">
-        <a href="#/" class="navbar-item is-active router-link-active" title="Getting Started"><span>Getting Started</span></a>
-        <a href="#/form" class="navbar-item" title="Form Inputs"><span>Form Inputs</span></a>
-        <a href="#/elements" class="navbar-item" title="Elements"><span>Elements</span></a>
-        <a href="#/components" class="navbar-item" title="Components"><span>Components</span></a>
-        <a href="#/extras" class="navbar-item" title="Extras"><span>More</span></a>
-      </div>
+      <pm-nav [routes]="routes"></pm-nav>
       <div class="navbar-end">
-        <a class="navbar-item" href="/login">Sign in</a>
+        <a class="navbar-item" [routerLink]="['/auth/login']" routerLinkActive="router-link-active">Sign in</a>
       </div>
     </div>
   </div>
