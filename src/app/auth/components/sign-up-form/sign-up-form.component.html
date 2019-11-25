@@ -1,0 +1,136 @@
+<form novalidate (ngSubmit)="onSubmit(registrationForm)" #registrationForm="ngForm">
+  <div class="field">
+    <label class="label">FirstName</label>
+    <div class="control">
+      <input
+        #firstNameControl="ngModel"
+        [(ngModel)]="registrationUser.firstName"
+        minlength="4"
+        required
+        name="firstName"
+        class="input"
+        [ngClass]="{ 'is-danger': (firstNameControl.touched || firstNameControl.dirty) && !firstNameControl.valid }"
+        type="text"
+        placeholder="Text input"
+      />
+    </div>
+    <div *ngIf="(firstNameControl.touched || firstNameControl.dirty) && !firstNameControl.valid">
+      <p *ngIf="firstNameControl.hasError('required')" class="help is-danger">FirstName is required</p>
+      <p *ngIf="firstNameControl.hasError('minlength')" class="help is-danger">
+        Minlength of firstname is {{ firstNameControl.errors['minlength'].requiredLength }}
+      </p>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">LastName</label>
+    <div class="control">
+      <input
+        #lastName="ngModel"
+        [(ngModel)]="registrationUser.lastName"
+        minlength="4"
+        required
+        name="lastName"
+        class="input"
+        [ngClass]="{ 'is-danger': (lastName.touched || lastName.dirty) && !lastName.valid }"
+        type="text"
+        placeholder="Text input"
+      />
+    </div>
+    <div *ngIf="(lastName.touched || lastName.dirty) && !lastName.valid">
+      <p *ngIf="lastName.hasError('required')" class="help is-danger">Lastname is required</p>
+      <p *ngIf="lastName.hasError('minlength')" class="help is-danger">
+        Minlength of lastName is {{ lastName.errors['minlength'].requiredLength }}
+      </p>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Email:</label>
+    <div class="control">
+      <input
+        #email="ngModel"
+        [(ngModel)]="registrationUser.email"
+        required
+        email
+        name="email"
+        class="input"
+        [ngClass]="{ 'is-danger': (email.touched || email.dirty) && !email.valid }"
+        type="text"
+        placeholder="Text input"
+      />
+    </div>
+    <div *ngIf="(email.touched || email.dirty) && !email.valid">
+      <p *ngIf="email.hasError('required')" class="help is-danger">Email is required</p>
+      <p *ngIf="email.hasError('email')" class="help is-danger">Email is invalid</p>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <label class="checkbox">
+        <input [(ngModel)]="registrationUser.withAddress" name="withAddress" type="checkbox" />
+        Add address
+      </label>
+    </div>
+  </div>
+  <div *ngIf="registrationUser.withAddress">
+    <div class="field">
+      <label class="label">City</label>
+      <div class="control">
+        <input
+          #city="ngModel"
+          [(ngModel)]="registrationUser.city"
+          minlength="4"
+          required
+          name="city"
+          class="input"
+          [ngClass]="{ 'is-danger': (city.touched || city.dirty) && !city.valid }"
+          type="text"
+          placeholder="Text input"
+        />
+      </div>
+      <div *ngIf="(city.touched || city.dirty) && !city.valid">
+        <p *ngIf="city.hasError('required')" class="help is-danger">City is required</p>
+        <p *ngIf="city.hasError('minlength')" class="help is-danger">
+          Minlength of City is {{ city.errors['minlength'].requiredLength }}
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Street</label>
+        <div class="control">
+          <input
+            #street="ngModel"
+            [(ngModel)]="registrationUser.street"
+            minlength="4"
+            required
+            name="street"
+            class="input"
+            [ngClass]="{ 'is-danger': (street.touched || street.dirty) && !street.valid }"
+            type="text"
+            placeholder="Text input"
+          />
+        </div>
+        <div *ngIf="(street.touched || street.dirty) && !street.valid">
+          <p *ngIf="street.hasError('required')" class="help is-danger">street is required</p>
+          <p *ngIf="street.hasError('minlength')" class="help is-danger">
+            Minlength of street is {{ street.errors['minlength'].requiredLength }}
+          </p>
+        </div>
+      </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button type="submit" class="button is-link">Submit</button>
+    </div>
+    <div class="control">
+      <button (click)="registrationForm.reset()" class="button is-link is-light">Cancel</button>
+    </div>
+  </div>
+</form>
+
+<br />Dirty: {{ registrationForm.dirty }} <br />Touched: {{ registrationForm.touched }} <br />Valid: {{ registrationForm.valid }}
+<br />Value: {{ registrationForm.value | json }}
