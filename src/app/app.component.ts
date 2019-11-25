@@ -14,8 +14,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.themeService.init();
-    setTimeout(() => {
-      this.themeService.changeTheme(THEME.dark);
-    }, 3000);
   }
 }

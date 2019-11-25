@@ -14,7 +14,8 @@ export class ThemeService {
   }
 
   init() {
-    this.changeTheme(this.currentTheme);
+    const storedTheme = localStorage.getItem('password-theme');
+    this.changeTheme(storedTheme ? storedTheme : this.currentTheme);
   }
 
   set currentTheme(theme: string) {
@@ -28,6 +29,7 @@ export class ThemeService {
     }
 
     (document.getElementById('theme') as HTMLLinkElement).href = theme;
+    localStorage.setItem('password-theme', theme);
     this.currentTheme$.next(theme);
   }
 
