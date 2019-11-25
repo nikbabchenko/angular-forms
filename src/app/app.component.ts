@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './core/services/theme.service';
+import { THEME } from './core/constants/theme.constants';
 
 @Component({
   selector: 'pm-root',
@@ -13,5 +14,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.themeService.init();
+    this.themeService.changeTheme(THEME.dark);
   }
 }
