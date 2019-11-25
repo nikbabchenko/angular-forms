@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { INavRoute } from '../../models/nav-route.interface';
 import { ThemeService } from '../../services/theme.service';
-import { THEME } from '../../constants/theme.constants';
 
 @Component({
   selector: 'pm-header',
