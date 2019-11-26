@@ -33,13 +33,13 @@ export class TogglerComponent implements OnInit, ControlValueAccessor {
 
   notifyValueChange(): void {
     if (this.onChange) {
-      this.onChange(this.value);
+      this.onChange(Boolean(this.value));
       this.onTouched();
     }
   }
 
   onToggleChange(event: InputEvent) {
-    const val = (event.target as HTMLInputElement).value;
+    const val = (event.target as HTMLInputElement).checked;
     this.value = val;
   }
 

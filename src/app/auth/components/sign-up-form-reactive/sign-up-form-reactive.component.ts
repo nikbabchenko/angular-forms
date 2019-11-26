@@ -20,6 +20,7 @@ export class SignUpFormReactiveComponent implements OnInit {
       firstName: new FormControl('', [Validators.required, Validators.minLength(5)]),
       lastName: new FormControl(),
       email: new FormControl(),
+      withAddress: new FormControl(false),
       rating: new FormControl(1, customRangeValidator(1, 5)),
       passwordGroup: new FormGroup(
         {
