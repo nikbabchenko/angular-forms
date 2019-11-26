@@ -8,9 +8,17 @@ import { DetailsComponent } from './pages/details/details.component';
 import { SharedModule } from '../shared/shared.module';
 import { PasswordItemComponent } from './components/password-item/password-item.component';
 import { PasswordListComponent } from './components/password-list/password-list.component';
+import { CreatePasswordFormComponent } from './components/create-password-form/create-password-form.component';
 
 @NgModule({
-  declarations: [PasswordsComponent, CreatePasswordComponent, DetailsComponent, PasswordItemComponent, PasswordListComponent],
+  declarations: [
+    PasswordsComponent,
+    CreatePasswordComponent,
+    DetailsComponent,
+    PasswordItemComponent,
+    PasswordListComponent,
+    CreatePasswordFormComponent
+  ],
   imports: [CommonModule, PasswordsRoutingModule, SharedModule]
 })
 export class PasswordsModule {}

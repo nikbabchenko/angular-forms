@@ -1,0 +1,9 @@
+.button.is-small.is-right {
+  pointer-events: auto;
+  right: 0;
+}
+
+:host {
+  display: block;
+  padding-top: 15px;
+}

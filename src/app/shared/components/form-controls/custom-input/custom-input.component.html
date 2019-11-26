@@ -1,0 +1,17 @@
+<div class="field">
+  <label class="label">{{ label }}</label>
+  <div class="control" [class.has-icons-right]="showEye">
+    <input class="input" [placeholder]="placeholder ? placeholder : ''" [(ngModel)]="value" [type]="type" [disabled]="isDisabled" />
+    <button *ngIf="showEye" (click)="toggleType()" class="button is-small icon is-right">
+      <span class="" *ngIf="!isPassword; else notVisible">
+        <i class="fas fa-eye"></i>
+      </span>
+      <ng-template #notVisible>
+        <span class="">
+          <i class="fas fa-eye-slash"></i>
+        </span>
+      </ng-template>
+    </button>
+  </div>
+  <ng-content></ng-content>
+</div>
