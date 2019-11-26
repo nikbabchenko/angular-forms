@@ -14,7 +14,7 @@
         placeholder="Text input"
       />
     </div>
-    <div *ngIf="(firstNameControl.touched || firstNameControl.dirty) && !firstNameControl.valid">
+    <div *ngIf="((firstNameControl.touched || firstNameControl.dirty) || registrationForm.submitted) && !firstNameControl.valid">
       <p *ngIf="firstNameControl.hasError('required')" class="help is-danger">FirstName is required</p>
       <p *ngIf="firstNameControl.hasError('minlength')" class="help is-danger">
         Minlength of firstname is {{ firstNameControl.errors['minlength'].requiredLength }}
@@ -37,7 +37,7 @@
         placeholder="Text input"
       />
     </div>
-    <div *ngIf="(lastName.touched || lastName.dirty) && !lastName.valid">
+    <div *ngIf="((lastName.touched || lastName.dirty) || registrationForm.submitted) && !lastName.valid">
       <p *ngIf="lastName.hasError('required')" class="help is-danger">Lastname is required</p>
       <p *ngIf="lastName.hasError('minlength')" class="help is-danger">
         Minlength of lastName is {{ lastName.errors['minlength'].requiredLength }}
@@ -60,7 +60,7 @@
         placeholder="Text input"
       />
     </div>
-    <div *ngIf="(email.touched || email.dirty) && !email.valid">
+    <div *ngIf="((email.touched || email.dirty) || registrationForm.submitted) && !email.valid">
       <p *ngIf="email.hasError('required')" class="help is-danger">Email is required</p>
       <p *ngIf="email.hasError('email')" class="help is-danger">Email is invalid</p>
     </div>
@@ -90,7 +90,7 @@
           placeholder="Text input"
         />
       </div>
-      <div *ngIf="(city.touched || city.dirty) && !city.valid">
+      <div *ngIf="((city.touched || city.dirty) || registrationForm.submitted) && !city.valid">
         <p *ngIf="city.hasError('required')" class="help is-danger">City is required</p>
         <p *ngIf="city.hasError('minlength')" class="help is-danger">
           Minlength of City is {{ city.errors['minlength'].requiredLength }}
@@ -113,7 +113,7 @@
             placeholder="Text input"
           />
         </div>
-        <div *ngIf="(street.touched || street.dirty) && !street.valid">
+        <div *ngIf="((street.touched || street.dirty) || registrationForm.submitted) && !street.valid">
           <p *ngIf="street.hasError('required')" class="help is-danger">street is required</p>
           <p *ngIf="street.hasError('minlength')" class="help is-danger">
             Minlength of street is {{ street.errors['minlength'].requiredLength }}
