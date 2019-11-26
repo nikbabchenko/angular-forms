@@ -1,76 +1,138 @@
 <form novalidate (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
+  <div class="field">
+    <label class="label">FirstName</label>
+    <div class="control">
+      <input
+        formControlName="firstName"
+        class="input"
+        [ngClass]="{
+          'is-danger':
+            (registrationForm.get('firstName').touched || registrationForm.get('firstName').dirty) &&
+            !registrationForm.get('firstName').valid
+        }"
+        type="text"
+        placeholder="Text input"
+      />
+    </div>
+    <div
+      *ngIf="
+        (registrationForm.get('firstName').touched || registrationForm.get('firstName').dirty) && !registrationForm.get('firstName').valid
+      "
+    >
+      <p *ngIf="registrationForm.get('firstName').hasError('required')" class="help is-danger">FirstName is required</p>
+      <p *ngIf="registrationForm.get('firstName').hasError('minlength')" class="help is-danger">
+        Minlength of firstname is {{ registrationForm.get('firstName').errors['minlength'].requiredLength }}
+      </p>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">LastName</label>
+    <div class="control">
+      <input
+        minlength="4"
+        required
+        formControlName="lastName"
+        class="input"
+        [ngClass]="{
+          'is-danger':
+            (registrationForm.get('lastName').touched || registrationForm.get('lastName').dirty) && !registrationForm.get('lastName').valid
+        }"
+        type="text"
+        placeholder="Text input"
+      />
+    </div>
+    <div
+      *ngIf="
+        (registrationForm.get('lastName').touched || registrationForm.get('lastName').dirty) && !registrationForm.get('lastName').valid
+      "
+    >
+      <p *ngIf="registrationForm.get('lastName').hasError('required')" class="help is-danger">Lastname is required</p>
+      <p *ngIf="registrationForm.get('lastName').hasError('minlength')" class="help is-danger">
+        Minlength of lastName is {{ registrationForm.get('lastName').errors['minlength'].requiredLength }}
+      </p>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Email:</label>
+    <div class="control">
+      <input
+        required
+        email
+        formControlName="email"
+        class="input"
+        [ngClass]="{
+          'is-danger':
+            (registrationForm.get('email').touched || registrationForm.get('email').dirty) && !registrationForm.get('email').valid
+        }"
+        type="text"
+        placeholder="Text input"
+      />
+    </div>
+    <div *ngIf="(registrationForm.get('email').touched || registrationForm.get('email').dirty) && !registrationForm.get('email').valid">
+      <p *ngIf="registrationForm.get('email').hasError('required')" class="help is-danger">Email is required</p>
+      <p *ngIf="registrationForm.get('email').hasError('email')" class="help is-danger">Email is invalid</p>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Rating:</label>
+    <div class="control">
+      <input
+        formControlName="rating"
+        class="input"
+        [ngClass]="{
+          'is-danger':
+            (registrationForm.get('rating').touched || registrationForm.get('rating').dirty) && !registrationForm.get('rating').valid
+        }"
+        type="text"
+        placeholder="Text input"
+      />
+    </div>
+    <div *ngIf="(registrationForm.get('rating').touched || registrationForm.get('rating').dirty) && !registrationForm.get('rating').valid">
+      <p *ngIf="registrationForm.get('rating').hasError('customRange')" class="help is-danger">Should be between 1 and 5</p>
+    </div>
+  </div>
+
+  <div formGroupName="passwordGroup">
     <div class="field">
-      <label class="label">FirstName</label>
+      <label class="label">Password:</label>
       <div class="control">
-        <input
-          formControlName="firstName"
-          class="input"
-          [ngClass]="{ 'is-danger': (registrationForm.get('firstName').touched || registrationForm.get('firstName').dirty) && !registrationForm.get('firstName').valid }"
-          type="text"
-          placeholder="Text input"
-        />
-      </div>
-      <div *ngIf="((registrationForm.get('firstName').touched || registrationForm.get('firstName').dirty)) && !registrationForm.get('firstName').valid">
-        <p *ngIf="registrationForm.get('firstName').hasError('required')" class="help is-danger">FirstName is required</p>
-        <p *ngIf="registrationForm.get('firstName').hasError('minlength')" class="help is-danger">
-          Minlength of firstname is {{ registrationForm.get('firstName').errors['minlength'].requiredLength }}
-        </p>
+        <input formControlName="password" class="input" type="password" placeholder="******" />
       </div>
     </div>
-
     <div class="field">
-      <label class="label">LastName</label>
+      <label class="label">Confirm password:</label>
       <div class="control">
-        <input
-          minlength="4"
-          required
-          formControlName="lastName"
-          class="input"
-          [ngClass]="{ 'is-danger': (registrationForm.get('lastName').touched || registrationForm.get('lastName').dirty) && !registrationForm.get('lastName').valid }"
-          type="text"
-          placeholder="Text input"
-        />
-      </div>
-      <div *ngIf="((registrationForm.get('lastName').touched || registrationForm.get('lastName').dirty)) && !registrationForm.get('lastName').valid">
-        <p *ngIf="registrationForm.get('lastName').hasError('required')" class="help is-danger">Lastname is required</p>
-        <p *ngIf="registrationForm.get('lastName').hasError('minlength')" class="help is-danger">
-          Minlength of lastName is {{ registrationForm.get('lastName').errors['minlength'].requiredLength }}
-        </p>
+        <input formControlName="confirmPassword" class="input" type="password" placeholder="*****" />
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Email:</label>
-      <div class="control">
-        <input
-          required
-          email
-            formControlName="email"
-          class="input"
-          [ngClass]="{ 'is-danger': (registrationForm.get('email').touched || registrationForm.get('email').dirty) && !registrationForm.get('email').valid }"
-          type="text"
-          placeholder="Text input"
-        />
-      </div>
-      <div *ngIf="((registrationForm.get('email').touched || registrationForm.get('email').dirty)) && !registrationForm.get('email').valid">
-        <p *ngIf="registrationForm.get('email').hasError('required')" class="help is-danger">Email is required</p>
-        <p *ngIf="registrationForm.get('email').hasError('email')" class="help is-danger">Email is invalid</p>
-      </div>
+    <p
+      class="help is-danger"
+      *ngIf="
+        !registrationForm.get('passwordGroup').valid &&
+        !registrationForm.get('passwordGroup.password').pristine &&
+        !registrationForm.get('passwordGroup.confirmPassword').pristine
+      "
+    >
+      Passwords doesn't match
+    </p>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      <button [disabled]="registrationForm.invalid" type="submit" class="button is-link">Submit</button>
     </div>
-
-
-    <div class="field is-grouped">
-      <div class="control">
-        <button type="submit" class="button is-link">Submit</button>
-      </div>
-      <div class="control">
-        <button (click)="registrationForm.reset()" class="button is-link is-danger">reset</button>
-      </div>
-      <div class="control">
-        <button (click)="patchForm()" class="button is-link is-light">Patch Form</button>
-      </div>
+    <div class="control">
+      <button (click)="registrationForm.reset()" class="button is-link is-danger">reset</button>
     </div>
-  </form>
+    <div class="control">
+      <button (click)="patchForm()" class="button is-link is-light">Patch Form</button>
+    </div>
+  </div>
+</form>
 
-  <br />Dirty: {{ registrationForm.dirty }} <br />Touched: {{ registrationForm.touched }} <br />Valid: {{ registrationForm.valid }}
-  <br />Value: {{ registrationForm.value | json }}
+<br />Dirty: {{ registrationForm.dirty }} <br />Touched: {{ registrationForm.touched }} <br />Valid: {{ registrationForm.valid }}
+<br />Value: {{ registrationForm.value | json }}

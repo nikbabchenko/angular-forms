@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistrationUser } from '../../models/registration-user.class';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { passwordsMatcher } from './validators/password-matcher';
+import { customRangeValidator } from './validators/custom-range.validator';
 
 @Component({
   selector: 'pm-sign-up-form-reactive',
@@ -15,12 +17,17 @@ export class SignUpFormReactiveComponent implements OnInit {
 
   ngOnInit() {
     this.registrationForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      firstName: new FormControl('', [Validators.required, Validators.minLength(5)]),
       lastName: new FormControl(),
       email: new FormControl(),
-      withAddress: new FormControl(false),
-      city: new FormControl(),
-      street: new FormControl()
+      rating: new FormControl(1, customRangeValidator(1, 5)),
+      passwordGroup: new FormGroup(
+        {
+          password: new FormControl(null, [Validators.required, Validators.minLength(4)]),
+          confirmPassword: new FormControl(null, Validators.required)
+        },
+        { validators: passwordsMatcher }
+      )
     });
   }
 

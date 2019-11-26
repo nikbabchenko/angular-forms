@@ -5,6 +5,7 @@ export class RegistrationUser {
     public email = '',
     public withAddress = false,
     public city = '',
-    public street = ''
+    public street = '',
+    public password = ''
   ) {}
 }
