@@ -8,8 +8,16 @@ import { CounterComponent } from './components/form-controls/counter/counter.com
 import { FormErrorsDirective } from './directives/form.errors.directive';
 
 @NgModule({
-  declarations: [PageLayoutComponent, CustomInputComponent, TogglerComponent, CounterComponent, FormErrorsDirective],
-  exports: [PageLayoutComponent, CustomInputComponent, TogglerComponent, ReactiveFormsModule, FormsModule, FormErrorsDirective],
+  declarations: [PageLayoutComponent, CounterComponent, CustomInputComponent, TogglerComponent, CounterComponent, FormErrorsDirective],
+  exports: [
+    PageLayoutComponent,
+    CounterComponent,
+    CustomInputComponent,
+    TogglerComponent,
+    ReactiveFormsModule,
+    FormsModule,
+    FormErrorsDirective
+  ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class SharedModule {}
