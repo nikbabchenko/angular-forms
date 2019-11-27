@@ -24,6 +24,7 @@ export class CustomInputComponent {
 
   @Input() placeholder: string;
   @Input() label: string;
+  @Input() hasIcon: boolean;
   // Both onChange and onTouched are functions
   onChange: any = () => {};
   onTouched: any = () => {};

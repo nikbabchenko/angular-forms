@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Password } from '../../models/password.class';
-import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'pm-create-password-form',
@@ -14,10 +14,34 @@ export class CreatePasswordFormComponent implements OnInit {
 
   ngOnInit() {
     this.createPasswordForm = this.fb.group({
-      website: '',
-      username: '',
-      password: ''
+      website: ['', [Validators.minLength(10), Validators.required]],
+      username: ['', [Validators.minLength(10)]],
+      password: '',
+      address: this.fb.array([this.createAddress()])
     });
+  }
+
+  get addressArrayControl(): FormArray {
+    return this.createPasswordForm.get('address') as FormArray;
+  }
+
+  createAddress() {
+    return this.fb.group({
+      id: new Date().getTime(),
+      text: ''
+    });
+  }
+
+  addTag() {
+    this.addressArrayControl.push(this.createAddress());
+  }
+
+  removeTag(index: number) {
+    this.addressArrayControl.removeAt(index);
+  }
+
+  isFirst(i: number) {
+    return i !== 0;
   }
 
   onSubmit() {
