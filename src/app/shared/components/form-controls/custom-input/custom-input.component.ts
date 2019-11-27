@@ -33,7 +33,7 @@ export class CustomInputComponent {
     this.currentValue = value;
     this.onChange(value);
     this.onTouched();
-    console.log('--this.', this);
+    console.log('--CustomInput', this);
   }
 
   @Input()

@@ -27,16 +27,16 @@ export class CreatePasswordFormComponent implements OnInit {
 
   createAddress() {
     return this.fb.group({
-      id: new Date().getTime(),
-      text: ''
+      id: [new Date().getTime()],
+      text: ['', Validators.minLength(3)]
     });
   }
 
-  addTag() {
+  addAddress() {
     this.addressArrayControl.push(this.createAddress());
   }
 
-  removeTag(index: number) {
+  removeAddress(index: number) {
     this.addressArrayControl.removeAt(index);
   }
 

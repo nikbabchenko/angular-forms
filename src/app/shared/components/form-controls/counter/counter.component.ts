@@ -6,7 +6,7 @@ import { ControlValueAccessor } from '@angular/forms';
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.scss']
 })
-export class CounterComponent implements ControlValueAccessor {
+export class CounterComponent {
   constructor() {}
 
   ngOnInit() {}

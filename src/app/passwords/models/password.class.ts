@@ -7,7 +7,7 @@ export class Password implements IPassword {
   password: string;
 
   constructor(password?: IPassword) {
-    const { id } = password || {};
+    const { id } = password || ({} as any);
     const passwordId = id ? id : new Date().getTime();
     Object.assign(this, { id: passwordId }, password);
   }

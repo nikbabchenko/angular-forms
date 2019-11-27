@@ -38,7 +38,7 @@ export class TogglerComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  onToggleChange(event: InputEvent) {
+  onToggleChange(event) {
     const val = (event.target as HTMLInputElement).checked;
     this.value = val;
   }
