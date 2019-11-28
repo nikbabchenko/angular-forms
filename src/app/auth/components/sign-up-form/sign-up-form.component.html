@@ -1,7 +1,11 @@
-<form novalidate (ngSubmit)="onSubmit(registrationForm)" #registrationForm="ngForm">
+<form novalidate
+  (ngSubmit)="onSubmit(registrationForm)"
+  #registrationForm="ngForm">
+
   <div class="field">
     <label class="label">FirstName</label>
     <div class="control">
+
       <input
         #firstNameControl="ngModel"
         [(ngModel)]="registrationUser.firstName"

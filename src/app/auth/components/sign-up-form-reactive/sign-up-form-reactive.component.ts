@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistrationUser } from '../../models/registration-user.class';
-import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { passwordsMatcher } from './validators/password-matcher';
 import { customRangeValidator } from './validators/custom-range.validator';
 
@@ -17,8 +17,8 @@ export class SignUpFormReactiveComponent implements OnInit {
 
   ngOnInit() {
     this.registrationForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required, Validators.minLength(5)]),
-      lastName: new FormControl(),
+      firstName: new FormControl('', [Validators.required, Validators.minLength(10)]),
+      lastName: new FormControl(''),
       email: new FormControl(),
       withAddress: new FormControl(false),
       rating: new FormControl(1, customRangeValidator(1, 5)),

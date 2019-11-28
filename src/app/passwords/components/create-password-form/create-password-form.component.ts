@@ -17,7 +17,8 @@ export class CreatePasswordFormComponent implements OnInit {
       website: ['', [Validators.minLength(10), Validators.required]],
       username: ['', [Validators.minLength(10)]],
       password: '',
-      address: this.fb.array([this.createAddress()])
+      address: this.fb.array([this.createAddress()]),
+      counter: [1, [Validators.min(0)]]
     });
   }
 

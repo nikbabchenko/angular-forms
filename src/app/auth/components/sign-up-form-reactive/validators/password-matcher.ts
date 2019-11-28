@@ -1,6 +1,6 @@
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
 
-export function passwordsMatcher(c: AbstractControl): { [key: string]: boolean } | null {
+export function passwordsMatcher(c: FormGroup): { [key: string]: boolean } | null {
   const passwordControl = c.get('password');
   const confirmPasswordControl = c.get('confirmPassword');
 

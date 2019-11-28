@@ -1,1 +1,9 @@
-<p>counter works!</p>
+<div class="buttons">
+  <button (click)="decrement()" class="button is-danger">
+    <i class="fas fa-minus"></i>
+  </button>
+  <div class="button">{{ value }}</div>
+  <button (click)="increment()" class="button is-primary">
+    <i class="fas fa-plus"></i>
+  </button>
+</div>
